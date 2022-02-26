@@ -158,6 +158,7 @@ else:
 # QUEUES - FIFO (First In First Out)
 
 # queues concept in python
+from calendar import c
 from collections import deque
 queue = deque([])   # using deque, you can pass a list as an arguement and create a queue
 queue.append(1) # then we append some elements to represent a real queue, for example who is nect at the till
@@ -300,7 +301,7 @@ print("list:", getsizeof(values))   # OUTPUT: list : 824456
 
 # UNPACKING OPERATOR
 
-# with the unpacking operator you can unpack any iterable, ,eaning you can output each individual element instead of getting [1, 2] as an output you get 1 2
+# with the unpacking operator you can unpack individual characters from any iterable
 numbers = [1, 2, 3]
 print(numbers) # OUTPUT: [1, 2, 3]
 print(*numbers) # OUTPUT: 1 2 3
@@ -308,6 +309,33 @@ print(*numbers) # OUTPUT: 1 2 3
 # this piece of code is the same as the code below
 values = list(range(5)) # OUTPUT: [0, 1, 2, 3, 4]
 
-# using the unpacking operator you can unpack and combine lists and strings without using built-in functions like list(), dict() etc. NOTE: this is possible because using the unpacking operator it prints out individual characters
+# using the unpacking operator you can unpack and combine lists, strings, dictionaries etc. without using built-in functions like list(), dict() etc. NOTE: this is possible because using the unpacking operator it prints out individual characters
 values = [*range(5)] # OUTPUT: [0, 1, 2, 3, 4]
 values = [*"Hello"]  # OUTPUT: ["H", "E", "L", "L", "O"]
+
+# you can also unpack and combine dictionaries
+first = {"x": 1}
+second = {"x": 10, "y": 2}
+combined = {**first, **second, "z": 5}  # you can also add another pair 
+print(combined)# OUTPUT : {"x": 10, "y": 2, "z": 5} # NOTE: if you have the 2 same keys then the last key vlaue pair will be used
+
+
+
+# EXCERSICE
+
+# QUESTION: Output the character that appears more inside a message
+
+from pprint import pprint
+
+# pprint(char_amount, width=1)  # using regular print here would print out a very messy dictionary so instead we use pprint, width=1 means to just print 1 pair per line
+message = "Hello my name is sunny maugin and I am a programmer"
+
+char_amount = {}
+for char in message:
+    if char in char_amount:
+        char_amount[char] += 1
+    else:
+        char_amount[char] = 1
+
+char_amount_srted = sorted(char_amount.items(), key=lambda kv: kv[1], reverse=True)
+print(char_amount_srted[0])
