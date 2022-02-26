@@ -76,6 +76,7 @@ sorted(numbers, reverse=True) # unlike the statements above this will not change
 # LAMBDA FUCTIONS
 
 # A way to sort a list with tuples inside, with normal sort method it wont work
+# lambda is just another way to create a function instead of using "def"
 products = [
     ("Product 1", 2.90),
     ("Product 2", 1.99),
@@ -88,7 +89,7 @@ print(products)
 
 # MAP FUNCTION
 
-# using a map function you can output all the prices of the products more cleaner and easily instead of writing 4-5 lines of code
+# using a map function is useful for any case where you want to turn a value inside a list and turn into something else
 products = [
     ("Product 1", 2.90),
     ("Product 2", 1.99),
@@ -100,7 +101,7 @@ prices = list(map(lambda product: product[1], products)) # OUTPUT ---> [2.90, 1.
 
 # FILTER FUNCTION
 
-# the filter function is used to filter aout the values in a list, fore example to only print the products with the value that is greater or equal to 5
+# the filter function is used to filter aout the values in a list, for example to only print the products with the value that is greater or equal to 5
 products = [
     ("Product 1", 2.90),
     ("Product 2", 1.99),
@@ -203,5 +204,36 @@ b = coords[1]
 
 
 # ARRAYS
+
+# you can use an array instead of a list if you encounter perfromance problems with a huge data using lists
+from array import array
+
+numbers = array("i", [1, 2, 3, 4])  # NOTE: the elements inside the list should all be the same data type, for example only intgers not floats or strings etc
+numbers[1]  # just like a list you can access any index you want
+
+
+# SETS
+
+# a set is a list but without any duplicates
+# therefore if you wanted to remove all the duplicates from a list you can convert the list into a set
+# NOTE: sets are displayed as {} AND do not support indexing so you cannot access an index in a set as they are not ordered, however you can check if an item is in a set
+numbers = [1, 2, 2, 3, 1, 3]
+unique = set(numbers)
+print(unique)   # this would OUTPUT: {1, 2, 3}
+
+# combining two sets which also removes duplicates from both sets and prints them both in one
+numbers = [1, 2, 2, 3, 1, 3]
+first = set(numbers)
+second = {1, 5, 4}
+
+print(first | second) # OUTPUT: {1, 2, 3, 4, 5}
+print(first & second) # this would output all numbers in common with the first and second list OUTPUT: {1}
+print(first - second) # this will remove all the elements that are common from both sets from the first set OUTPUT: first set = {2, 3}
+print(first ^ second) # this will output all the elemants that are in each set but not common in both, OUTPUT: {2, 3, 4, 5} NOTE: only one is common in both
+
+
+# DICTIONARIES
+
+
 
 
