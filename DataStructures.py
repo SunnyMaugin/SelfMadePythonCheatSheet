@@ -234,6 +234,80 @@ print(first ^ second) # this will output all the elemants that are in each set b
 
 # DICTIONARIES
 
+# ways to write a dictionary
+keys = {"x": 1, "y": 2}
+keys = dict(x=1, y=2)
+
+# you can add or change (key: value) pairs with
+keys["a"] = 3
+keys["x"] = 10
+
+# if you want to find/get a value from a dictionary whether you know if it in the dictionary or not you can do
+if "z" in keys:
+    print(keys["z"])
+
+# OR
+
+print(keys.get("z"))
+print(keys.get("z", 0)) # you can set a default value so if the key is not inside the dictionary then it will return its default value you set
+
+# To delete an item from the dictionary you can do
+
+del keys["a"]
+
+# Looping through a dictionary
+
+# if you want to loop and only get the keys then do
+for x in keys:
+    print(x)
+# if you wanted to print the keys and values then you can do
+for x in keys:
+    print(x, keys[x])   # OUTPUT: x = 10, y = 2
+# you can also use unpacking to get the same result
+for key, value in keys.items():
+    print(key, value)   # OUTPUT: x = 10, y = 2
 
 
+# COMPREHENTIONS (LISTS, DICTIONARIES, SETS)
+# NOTE: VERY USEFUL
 
+values = []
+for i in range (5):
+    values.append(i * 2)
+
+# this top piece of code is the exact same as this one below:
+# NOTE: the syntax for a comprhention is: [expression for item(loop) in items(iterable)]
+# NOTE: this is not limted to lists, you can use this for sets and dictionaries
+
+values = [i * 2 for i in range(10)]  # list
+values = {i * 2 for i in range(5)}  # set
+values = {x: y * 2 for x in range(5)}   # dictionary
+
+
+# GENERATOR EXPRESSIONS
+
+# generators are used when you are are working with a huge piece of data, using a generator will significantly reduce the amount of memory that is taken
+from sys import getsizeof
+
+# generator ---> OUTPUT: gen: 112 (bytes of memory)
+values = (i * 2 for i in range(100000)) # using () will turn this staement into a generator and wont work like a comprehention
+print("gen:", getsizeof(values))    # OUTPUT: gen: 112 no matter what the size of the input is, NOTE: if we didnt use a generator here then the out putwould be using 800000+ bytes of memory
+
+# list comprehention ---> OUTPUT: list : 824456 (bytes of memory)
+values = [i * 2 for i in range(100000)]
+print("list:", getsizeof(values))   # OUTPUT: list : 824456
+
+
+# UNPACKING OPERATOR
+
+# with the unpacking operator you can unpack any iterable, ,eaning you can output each individual element instead of getting [1, 2] as an output you get 1 2
+numbers = [1, 2, 3]
+print(numbers) # OUTPUT: [1, 2, 3]
+print(*numbers) # OUTPUT: 1 2 3
+
+# this piece of code is the same as the code below
+values = list(range(5)) # OUTPUT: [0, 1, 2, 3, 4]
+
+# using the unpacking operator you can unpack and combine lists and strings without using built-in functions like list(), dict() etc. NOTE: this is possible because using the unpacking operator it prints out individual characters
+values = [*range(5)] # OUTPUT: [0, 1, 2, 3, 4]
+values = [*"Hello"]  # OUTPUT: ["H", "E", "L", "L", "O"]
