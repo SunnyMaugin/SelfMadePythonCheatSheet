@@ -56,13 +56,15 @@ for number in range(3): # The range function just repeats something x amount of 
 for number in range(1, 7, 2): # This would print 1 to 7 in steps of 2 ---> 135, number is the index position 
     print(number)
 
+# FOR ELSE LOOP
+
 successful = True
 for number in range(3): # this is a "for else" loop 
     print("Hello")
     if successful:
         print("attempt successful")
         break
-else:
+else:   # this means that if we complete the for loop completely then the else is printed, however if we dont loop through the for loop fully then it wont be printed
     print("sorry we tried")
 
 
